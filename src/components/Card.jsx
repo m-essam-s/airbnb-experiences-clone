@@ -1,18 +1,18 @@
 import PropTypes from 'prop-types';
 const Card = (props) => {
     let badgeText
-    if (props.openSpots === 0) {
+    if (props.card.openSpots === 0) {
         badgeText = "SOLD OUT"
-    } else if (props.country === "Online") {
+    } else if (props.card.location === "Online") {
         badgeText = "ONLINE"
     }
     return (
         <div className="card">
             {badgeText && <div className="card--badge">{badgeText}</div>}
             <img
-                src={`/images/${props.img}`}
+                src={`/images/${props.card.coverImg}`}
                 className="card--image"
-                alt={props.title}
+                alt={props.card.title}
             />
             <div className="card--stats">
                 <img
@@ -20,24 +20,28 @@ const Card = (props) => {
                     className="card--star"
                     alt="Star icon."
                 />
-                <span>{props.rating}</span>
-                <span className="gray">({props.reviewCount}) • </span>
-                <span className="gray">{props.country}</span>
+                <span>{props.card.stats.rating}</span>
+                <span className="gray">({props.card.stats.reviewCount}) • </span>
+                <span className="gray">{props.card.location}</span>
             </div>
-            <p className="card--title">{props.title}</p>
-            <p className="card--price"><span className="bold">From ${props.price}</span> / person</p>
+            <p className="card--title">{props.card.title}</p>
+            <p className="card--price"><span className="bold">From ${props.card.price}</span> / person</p>
         </div>
     )
 }
 
 Card.propTypes = {
-    img: PropTypes.string.isRequired,
-    rating: PropTypes.number.isRequired,
-    reviewCount: PropTypes.number.isRequired,
-    country: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    openSpots: PropTypes.number.isRequired,
+    card: PropTypes.shape({
+        openSpots: PropTypes.number.isRequired,
+        location: PropTypes.string.isRequired,
+        coverImg: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+        stats: PropTypes.shape({
+            rating: PropTypes.number.isRequired,
+            reviewCount: PropTypes.number.isRequired,
+        }).isRequired,
+        price: PropTypes.number.isRequired,
+    }).isRequired,
 };
 
 export default Card;
