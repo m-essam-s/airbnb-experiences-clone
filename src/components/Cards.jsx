@@ -6,7 +6,7 @@ const Cards = () => {
         return (
             <Card
                 key={card.id}
-                card={card}
+                {...card}
             />
         )
     })
