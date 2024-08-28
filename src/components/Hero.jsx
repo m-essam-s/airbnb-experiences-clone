@@ -1,4 +1,4 @@
-import Photo from '/assets/images/photo-grid.png';
+import Photo from '/images/photo-grid.png';
 
 const PhotoGrid = () => <img src={Photo} alt="Photo Grid" className="hero--photo" />
 

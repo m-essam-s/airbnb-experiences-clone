@@ -1,16 +1,22 @@
 import PropTypes from 'prop-types';
 const Card = (props) => {
-    console.log(props);
+    let badgeText
+    if (props.openSpots === 0) {
+        badgeText = "SOLD OUT"
+    } else if (props.country === "Online") {
+        badgeText = "ONLINE"
+    }
     return (
         <div className="card">
+            {badgeText && <div className="card--badge">{badgeText}</div>}
             <img
-                src={`/assets/images/${props.img}`}
+                src={`/images/${props.img}`}
                 className="card--image"
-                alt="Main card image."
+                alt={props.title}
             />
             <div className="card--stats">
                 <img
-                    src="/assets/icons/star.png"
+                    src="/icons/star.png"
                     className="card--star"
                     alt="Star icon."
                 />
@@ -18,8 +24,8 @@ const Card = (props) => {
                 <span className="gray">({props.reviewCount}) • </span>
                 <span className="gray">{props.country}</span>
             </div>
-            <h2>{props.title}</h2>
-            <p><span className="bold">From ${props.price}</span> / person</p>
+            <p className="card--title">{props.title}</p>
+            <p className="card--price"><span className="bold">From ${props.price}</span> / person</p>
         </div>
     )
 }
@@ -31,6 +37,7 @@ Card.propTypes = {
     country: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
+    openSpots: PropTypes.number.isRequired,
 };
 
 export default Card;
