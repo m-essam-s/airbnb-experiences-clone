@@ -1,32 +1,14 @@
 # AirBnB Experiences Clone
-## [View the live site](https://airbnb-experiences-clone.vercel.app/)
 
-1. What do props help us accomplish?
-Make a component more reusable.
+This project is a clone of the AirBnB Experiences website. It was created as part of the [Learn React](https://scrimba.com/learn/react) course by Bob Ziroll.
 
+## How to Run
 
-2. How do you pass a prop into a component?
-<MyAwesomeHeader title="???" />
+1. Clone the repository
+2. Run `cd airbnb-experiences-clone`
+3. Run `npm install`
+4. Run `npm start`
 
+## Live Site
 
-3. Can I pass a custom prop (e.g. `blahblahblah={true}`) to a native
-   DOM element? (e.g. <div blahblahblah={true}>) Why or why not?
-No, because the JSX we use to describe native DOM elements will
-be turned into REAL DOM elements by React. And real DOM elements
-only have the properties/attributes specified in the HTML specification.
-(Which doesn't include properties like `blahblahblah`)
-
-
-4. How do I receive props in a component?
-function Navbar(props) {
-    console.log(props.blahblahblah)
-    return (
-        <header>
-            ...
-        </header>
-    )
-}
-
-
-5. What data type is `props` when the component receives it?
-An object!
+The live site can be found [here](https://messams-scrimba-air-bnb-clone.netlify.app).
